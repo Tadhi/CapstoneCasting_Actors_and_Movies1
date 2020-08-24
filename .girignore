@@ -1,0 +1,9 @@
+venv/
+env
+.vscode/
+__pycache__
+setup.sh
+.pytest_cache/
+singersandsongs
+.DS_Store
+.git
