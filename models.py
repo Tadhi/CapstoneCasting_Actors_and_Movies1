@@ -12,10 +12,9 @@ database_name = "casting"
 database_path = os.environ['DATABASE_URL']
 conn = psycopg2.connect(database_path, sslmode='require')
 
-'''
-setup_db(app)
-    binds a flask application and a SQLAlchemy service
-'''
+db = SQLAlchemy()
+
+
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -33,7 +32,7 @@ class Movie(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String, nullable=False)
   release_date = db.Column(db.DateTime(), default=datetime.utcnow)
-  
+
 #Relationship
   id_movie = db.relationship('Actor')
 

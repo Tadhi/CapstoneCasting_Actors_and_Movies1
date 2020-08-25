@@ -26,7 +26,7 @@ def paginate_results(request, selection):
 
 def create_app(test_config=None):
 #Create and configure the app
-    app = Flask(__name__, template_folder='page')
+    app = Flask(__name__)
     setup_db(app)
     migrate = Migrate(app, db)
     CORS(app)
@@ -69,7 +69,7 @@ def create_app(test_config=None):
         'status': 200,
         'movies': movies_paginated
     })
-    
+
 #GET/Actors:
 #It's a public endpoint that contain only the data representation.
 #Returns status code 200 and json or the error handler.
@@ -122,7 +122,7 @@ def create_app(test_config=None):
          'status': 200,
          'movies': [Movie.query.get(new_movie.id).format()]
     })
-    
+
 
 #POST Actors:
 #It's a public endpoint that create a new row in the Actors table with data representation.
@@ -230,10 +230,10 @@ def create_app(test_config=None):
          'actors': [Actor.query.get(actorid).format()]
     })
 
-    
+
 
 #DELETE Endpoint:
-#Delete/movies/<id>: 
+#Delete/movies/<id>:
 #It's require the delete movies permission. Will delete movies if it exists.
 #Returns status code 200 and json or or the error handler.
     @app.route('/movies/<movieid>', methods=['DELETE'])
@@ -257,7 +257,7 @@ def create_app(test_config=None):
     })
 
 
-#Delete/actors/<id>: 
+#Delete/actors/<id>:
 #It's require the delete actors permission. Will delete actors if it exists.
 #Returns status code 200 and json or or the error handler.
     @app.route('/actors/<actorid>', methods=['DELETE'])
