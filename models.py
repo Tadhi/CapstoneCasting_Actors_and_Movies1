@@ -8,9 +8,9 @@ from sqlalchemy.orm import backref
 
 #App Config
 database_name = "casting"
-database_path = "postgresql://{}/{}".format('localhost:5432', database_name)
-#database_path = os.environ['DATABASE_URL']
-#conn = psycopg2.connect(database_path, sslmode='require')
+#database_path = "postgresql://{}/{}".format('localhost:5432', database_name)
+database_path = os.environ['DATABASE_URL']
+conn = psycopg2.connect(database_path, sslmode='require')
 
 db = SQLAlchemy()
 
