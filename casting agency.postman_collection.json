@@ -1,0 +1,1269 @@
+{
+	"info": {
+		"_postman_id": "ac226e05-2fd4-4fe8-a33c-72489e1b08d2",
+		"name": "casting agency",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "assistant",
+			"item": [
+				{
+					"name": "Get actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1eb550ba-29e1-4f13-830f-a3295303002b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actors).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9b852d77-7ab8-4ae6-b03b-f0f01c955600",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movies).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "63a1d7a1-a67a-4e50-8b25-701827e044a5",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Person\",\n\t\"age\": 21,\n\t\"gender\": \"female\",\n\t\"id_actor\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a8f9756-6304-4e1c-9417-0834608c7dc8",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Avengers\",\n\t\"release_date\": \"2009-09-1 09:22\"\n}"
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6ee0d13d-0f95-45c0-913c-63b97139ffb5",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"francis\",\n\t\"age\": 21,\n\t\"gender\": \"female\",\n\t\"id_actor\": 1\n}"
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors/10",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f3c48464-1179-462b-a2ae-e6b8abb3c750",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Night Crawl\",\n\t\"release_date\": \"2021-10-1 04:22\"\n}"
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies/4",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "18fb2ed5-1ce3-42a0-85bb-5c7766c43a5d",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors/7",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4e08a001-4835-48fc-8eee-e92ce3172a8f",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlhJNkE4MXJzNXh4WHhmTlZNSm4tTyJ9.eyJpc3MiOiJodHRwczovL2NhcHN0b25lLXRvdGEuYXUuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3MjcwMDg0NjQ2NDA5ODE5Nzk2IiwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImh0dHBzOi8vY2Fwc3RvbmUtdG90YS5hdS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTk4NDYyOTg5LCJleHAiOjE1OTg1NDkzODksImF6cCI6IkN3VmJNSzZjNjBsWEtRU1c2T2Y2VjY5SkRFeHBRSlRTIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbIkdldDpBY3RvcnMiLCJHZXQ6TW92aWVzIl19.g6r2dDVG25Xx_Rzp0AMJS7BJm6mmIC_rKlrBDEBN6Fsyz-fUQgoJCarovzTuCseIEvIVoogldH5F9RcTkTdq3Gx0bjwSg_vrbi6nKoIa-cnXUTCkxOdmgAtfmR1V6v-P72siNJovtGuTjOnYFvEq2p6WLo0B3Gy9u1uyvO16_3HUt5FDvQuEPlY6iYPwgF-Diw4-JYrL56_VFT11lB6QIVBbgXaa-Vc1HPJgCksdwr3I3Gq7-qt1ZMR7_fAJr_uP8k9x9njUvbcqf2RiU8wTPhoAbJDiBqOCUOJoV7VYzxz0EWjv7cuO64fsYDytkhnzL99ZIOKdadDB2PinZUW16A",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "78f7d24f-07cf-4191-a2f6-2624c6ada605",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a30ebc99-6b4d-4b7f-ac9a-1fd3040ad937",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "director",
+			"item": [
+				{
+					"name": "Get actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "84cd2f13-39a6-43f1-a69e-1c374c70822d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actors).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a3e3b989-ca30-442f-922e-052e30eb3685",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movies).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ada1fb9-334c-4e0d-a3eb-5345989f6904",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actors).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Sean Kingston\",\n\t\"age\": 31,\n\t\"gender\": \"female\",\n\t\"id_actor\": 13\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "05df59b9-78b6-48de-8ee2-bdb8bf21ea33",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Tim McGraw\",\n\t\"release_date\": \"2021-10-8 04:22\"\n}"
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66363059-df0b-4a62-9595-3cac3faa8a29",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actors).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Sean Kingston\",\n\t\"age\": 31,\n\t\"gender\": \"female\",\n\t\"id_actor\": 13\n}"
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors/10",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "07c06881-a933-430d-966a-b792c8e92bc2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movies).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"love story\",\n\t\"release_date\": \"2021-10-6 08:22\"\n}"
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies/3",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef6a4afa-7bb1-4c8a-a1a3-09676f0142d1",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors/5",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "68589e1f-e3c0-42dd-b61f-00eb0ba865cc",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies/2",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlhJNkE4MXJzNXh4WHhmTlZNSm4tTyJ9.eyJpc3MiOiJodHRwczovL2NhcHN0b25lLXRvdGEuYXUuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA2ODA4NzYzNzczODk5ODM3Mjg2IiwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImh0dHBzOi8vY2Fwc3RvbmUtdG90YS5hdS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTk4NDYzMjU1LCJleHAiOjE1OTg1NDk2NTUsImF6cCI6IkN3VmJNSzZjNjBsWEtRU1c2T2Y2VjY5SkRFeHBRSlRTIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbIkRlbGV0ZTpBY3RvcnMiLCJHZXQ6QWN0b3JzIiwiR2V0Ok1vdmllcyIsIlBhdGNoOkFjdG9ycyIsIlBhdGNoOk1vdmllcyIsIlBvc3Q6QWN0b3JzIl19.BNqdsNR59vgQZs5YFiOVyVw9kDrk1GzhjYzOZGWHH8lVWEwtAtOSSiXaYd0Lt5OOTo-VXvZbxxu5eABm983J6Oc62HF3jDl8Q1xOpZ3vllUTD-b3RGZqKZcnIIihfLllnU9M8nnIyVJZBa6b7-vsfliNira6dvkvGSwnDquwUARRGFRi91Vg58FdY1L5muv07xNLyfd46JXvmubuTgbni7VtQEqy-UU6WGu5Gi8MOrSHSCBPguy-azQMpTYlNdAJeBJDxN-iJS36rsE5M0y7zWgz1L7H4JaaOUZ8y_csbxIMWTcb1uC7Sk70WHrMZ6CAr8j2qgMR8-DSXezDRbNHfw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9e40fcff-a356-43f1-a915-e46e1a910e02",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b48e80e-3ef1-4b8b-b23e-331ec11d965b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "executive producer",
+			"item": [
+				{
+					"name": "Get actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0bed2a93-060a-43fc-897e-bbfb94b52169",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actors).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors?offset=1&limit=3",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2e40223e-758e-469d-a761-44f3f80ac169",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movies).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies?offset=1&limit=3",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "64134c1c-d55d-4531-bd15-47cd3bfd2052",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actors).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Lady Gaga\",\n\t\"age\": 34,\n\t\"gender\": \"female\",\n\t\"id_actor\": 6\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1deb0d9e-b2c1-4f71-852c-ac24c78a536f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movies).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Rian on Me\",\n\t\"release_date\": \"2020-10-1 04:22\"\n}"
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "849ff540-4ba0-44ae-a68c-33dc78fca5b4",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.actors).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Kanye west\",\n\t\"age\": 42,\n\t\"gender\": \"male\",\n\t\"id_actor\": 1\n}"
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "255f0d06-e330-4841-aec0-a816175a9b4f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movies).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Rain On Me\",\n\t\"release_date\": \"2019-10-2 09:22\"\n}"
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "63408471-9c1c-4851-8d15-a48e86cb3e55",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/actors/8",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "80f5060f-fe17-4de8-97ea-b80d597fc7cb",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://castingactorsandmovies.herokuapp.com/movies/6",
+							"protocol": "https",
+							"host": [
+								"castingactorsandmovies",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlhJNkE4MXJzNXh4WHhmTlZNSm4tTyJ9.eyJpc3MiOiJodHRwczovL2NhcHN0b25lLXRvdGEuYXUuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVmMzhiYTQyMDcwZDgwMDA2ZGY0MzU4ZSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImlhdCI6MTU5ODQ2MzM2NywiZXhwIjoxNTk4NTQ5NzY3LCJhenAiOiJDd1ZiTUs2YzYwbFhLUVNXNk9mNlY2OUpERXhwUUpUUyIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiRGVsZXRlOkFjdG9ycyIsIkRlbGV0ZTpNb3ZpZXMiLCJHZXQ6QWN0b3JzIiwiR2V0Ok1vdmllcyIsIlBhdGNoOkFjdG9ycyIsIlBhdGNoOk1vdmllcyIsIlBvc3Q6QWN0b3JzIiwiUG9zdDpNb3ZpZXMiXX0.mqvd7DTD1A4lA5HexDESdJC4o9bsg5mGuME9ZHjqVXhSy5u81etpfp6MpzTLYzpLVWPW7Sl-EmBWGj77Lj15--wI3L1n27Ww_-V6Fal41fRokwvxMg33H_dPqqFLwovr7-SwihhtLQLXmzAQIMeIgsPSwVYZlAnJ_IFlHQNm7AGTEBJTNW4mZ_Ee_d8DQi3vzzQrNx9sdrMskHnSiCr-r0I5qgCL--MyOAWy-d7uZCmCEz7oVjUkxM-xlM9uw98apa2CN3Rjx88pQ18X056hl1pxixT379fiNh7eD1g2N3vNKYB4UEKmxCUfcxzJiHLmslBczr4dFZvfqGHYWG5eSg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "98b0cb53-8fd9-45f3-8ba1-37849d777cca",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc1e08cd-0cdc-492b-8037-93a518c9cac9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
