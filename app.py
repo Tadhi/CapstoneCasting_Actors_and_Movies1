@@ -1,7 +1,7 @@
 import os
 import sys
 import ssl
-from flask import Flask, request, abort, jsonify, render_template
+from flask import Flask, request, abort, jsonify
 from models import setup_db, Actor, Movie, db
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -41,10 +41,6 @@ def create_app(test_config=None):
     @app.route('/')
     def index():
      return ('Hello')
-
-
-
-
 
 ##ROUTES
 #GET/Movies:
