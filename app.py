@@ -94,7 +94,7 @@ def create_app(test_config=None):
         'actors': actors_paginated
     })
 
-#--------------------------------------------------------------------------------------#
+
 #POST Endpoint:
 #POST/Movies:
 #It's a public endpoint that create a new row in the movies table with data representation.
@@ -155,7 +155,7 @@ def create_app(test_config=None):
 
     })
 
-#--------------------------------------------------------------------------------------#
+
 #PATCH Endpoint:
 #PATCH/movies/<id>:
 #Require the patch movies permission with data representation that will update movies if it exists.
