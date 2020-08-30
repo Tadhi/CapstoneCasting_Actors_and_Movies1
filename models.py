@@ -6,13 +6,14 @@ from sqlalchemy import Column, String, Integer, create_engine, Date, Table, Fore
 import psycopg2
 from sqlalchemy.orm import backref
 
-
-#App Config
-database_name = "casting"
-#database_path = "postgresql://{}/{}".format('localhost:5432', database_name)
-database_path = os.environ['DATABASE_URL']
+'''
+# App Config
 #conn = psycopg2.connect(database_path, sslmode='require')
+database_path = "postgresql://{}/{}".format('localhost:5432', database_name)
+'''
 
+database_name = "casting"
+database_path = os.environ['DATABASE_URL']
 db = SQLAlchemy()
 
 
@@ -24,18 +25,17 @@ def setup_db(app, database_path=database_path):
     db.create_all()
 
 
-
-#Models:
-#Movie Model
+# Models:
+# Movie Model
 class Movie(db.Model):
     __tablename__ = 'movie'
 
-    #Column
+    # Column
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     release_date = db.Column(db.DateTime(), default=datetime.utcnow)
 
-    #Relationship
+    # Relationship
     id_movie = db.relationship('Actor')
 
     def get_title(self):
@@ -60,17 +60,17 @@ class Movie(db.Model):
         }
 
 
-#Actor Model
+# Actor Model
 class Actor(db.Model):
     __tablename__ = 'actor'
 
-    #column
+    # column
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     age = db.Column(db.Integer, nullable=False)
     gender = db.Column(db.String, nullable=False)
 
-    #Relationship
+    # Relationship
     id_actor = db.Column(db.Integer, db.ForeignKey('movie.id'), nullable=True)
 
     def get_name(self):

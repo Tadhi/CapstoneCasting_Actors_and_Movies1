@@ -6,14 +6,14 @@ from urllib.request import urlopen
 from config import auth0_config
 import os
 
-#AUTH0_DOMAIN,ALGORITHMS,API_AUDIENCE
+# AUTH0_DOMAIN,ALGORITHMS,API_AUDIENCE
 
 AUTH0_DOMAIN = os.environ['AUTH0_DOMAIN']
 ALGORITHMS = os.environ['ALGORITHMS']
 API_AUDIENCE = os.environ['API_AUDIENCE']
 
 
-#AuthError Exception
+# AuthError Exception
 
 class AuthError(Exception):
     def __init__(self, error, status_code):
@@ -21,37 +21,37 @@ class AuthError(Exception):
         self.status_code = status_code
 
 
-#Auth Header
+# Auth Header
 def get_token_auth_header():
 
-    #Get the authorization header from the request
+    # Get the authorization header from the request
     auth_header = request.headers.get('Authorization', None)
 
-    #Auth header is missing
+    # Auth header is missing
     if not auth_header:
         raise AuthError({
             'code': 'authorization_header_missing',
             'description': 'Authorization header is expected.'
         }, 401)
 
-    #Split Bearer and the token from the header
+    # Split Bearer and the token from the header
     parts = auth_header.split()
 
-    #Auth header did not start with "Bearer"
+    # Auth header did not start with "Bearer"
     if parts[0].lower() != 'bearer':
         raise AuthError({
             'code': 'invalid_header',
             'description': 'Authorization header must start with "Bearer".'
         }, 401)
 
-    #Token was not found inside the header
+    # Token was not found inside the header
     elif len(parts) == 1:
         raise AuthError({
             'code': 'invalid_header',
             'description': 'Token not found.'
         }, 401)
 
-    #Header was not a bearer token
+    # Header was not a bearer token
     elif len(parts) > 2:
         raise AuthError({
             'code': 'invalid_header',
@@ -63,14 +63,14 @@ def get_token_auth_header():
 
 
 def check_permissions(permission, payload):
-    #Permissions were not found in the token
+    # Permissions were not found in the token
     if 'permissions' not in payload:
         raise AuthError({
             'code': 'invalid_claims',
             'description': 'Permissions were not included in the JWT.'
         }, 400)
 
-    #Token does not support the requested permission
+    # Token does not support the requested permission
     if permission not in payload['permissions']:
         raise AuthError({
             'code': 'unauthorized',
@@ -137,12 +137,12 @@ def requires_auth(permission=''):
     def requires_auth_decorator(f):
         @wraps(f)
         def wrapper(*args, **kwargs):
-            #Get the token from the auth header
+            # Get the token from the auth header
             token = get_token_auth_header()
-            #Decode the token
+            # Decode the token
             decoded_payload = verify_decode_jwt(token)
 
-            #Check if the token's permissions contain the requested permission
+            # Check if the token's permissions contain the requested permission
             check_permissions(permission, decoded_payload)
 
             return f(decoded_payload, *args, **kwargs)

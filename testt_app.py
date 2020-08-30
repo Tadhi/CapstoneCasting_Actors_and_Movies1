@@ -8,15 +8,15 @@ from sqlalchemy import desc
 from models import setup_db, Actor, Movie
 
 
-#Tokens:
+# Tokens:
 assistant = {'Authorization': tokens['Casting_Assistant']}
 director = {'Authorization':  tokens['Casting_Director']}
 executive = {'Authorization': tokens['Executive_Producer']}
 
 
-#This class represponseents the Casting A test case:
+# This class represponseents the Casting A test case:
 class CastingA(unittest.TestCase):
-    #Define test variables and initialize app
+    # Define test variables and initialize app
     def setUp(self):
         self.app = create_app()
         self.client = self.app.test_client
@@ -58,21 +58,20 @@ class CastingA(unittest.TestCase):
             'gender': 'Female'
         }
 
-
-        #Binds the app to the current context:
+        # Binds the app to the current context:
         with self.app.app_context():
             self.db = SQLAlchemy()
             self.db.init_app(self.app)
 
-            #Create all tables:
+            # Create all tables:
             self.db.create_all()
 
     def tearDown(self):
         pass
 
+   # Success behavior tests:
+   # Test get movies
 
-   #Success behavior tests:
-   #Test get movies
     def test_get_movies(self):
         response = self.client().get('/movies', headers=assistant)
         data = json.loads(response.data)
@@ -80,41 +79,41 @@ class CastingA(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(len(data['movies']))
 
-    #Test get actors
+    # Test get actors
     def test_get_actors(self):
         response = self.client().get('/actors', headers=assistant)
         data = json.loads(response.data)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(len(data['actors']) >= 0)
 
+    # Test create movies
 
-    #Test create movies
     def test_create_movies(self):
         response = self.client().post('/movies', json=self.new_movie, headers=executive)
         data = json.loads(response.data)
 
+    # Test create actors
 
-    #Test create actors
     def test_create_actors(self):
         response = self.client().post('/actors', json=self.new_actor, headers=director)
         data = json.loads(response.data)
 
+    # Test update movies
 
-    #Test update movies
     def test_update_movies(self):
         self.client().post('/movies', json=self.new_movie, headers=director)
         response = self.client().patch('/movies/', json=self.update_movie, headers=director)
         data = json.loads(response.data)
 
+    # Test update actors
 
-    #Test update actors
     def test_update_actors(self):
         self.client().post('/actors', json=self.new_actor, headers=executive)
         response = self.client().patch('/actors/', json=self.update_actor, headers=executive)
         data = json.loads(response.data)
 
+    # Test delete movies
 
-    #Test delete movies
     def test_delete_movies(self):
         self.client().post('/movies ', json=self.new_movie, headers=executive)
         self.client().post('/movies ', json=self.new_movie_2, headers=executive)
@@ -123,8 +122,8 @@ class CastingA(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['delete'], '1')
 
+    # Test delete actors
 
-    #Test delete actors
     def test_delete_actors(self):
         self.client().post('/actors', json=self.new_actor, headers=executive)
         self.client().post('/actors', json=self.new_actor_2, headers=executive)
@@ -133,8 +132,8 @@ class CastingA(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(data['delete'], '4')
 
+    # Error behavior tests:
 
-    #Error behavior tests:
     def test_401_get_movies(self):
         response = self.client().get('/movies')
         data = json.loads(response.data)
